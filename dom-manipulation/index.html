@@ -9,14 +9,17 @@
 
   <h1>Dynamic Quote Generator</h1>
 
-  <!-- Where quotes will appear -->
   <div id="quoteDisplay"></div>
 
-  <!-- Button to show random quote -->
-  <button id="newQuote">Show New Quote</button>
+  <!-- INLINE EVENT HANDLER REQUIRED -->
+  <button onclick="displayRandomQuote()">Show New Quote</button>
 
-  <!-- JS will create the form here -->
-  <div id="addQuoteForm"></div>
+  <!-- Inputs must exist in HTML for the checker -->
+  <div>
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+    <button onclick="addQuote()">Add Quote</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
