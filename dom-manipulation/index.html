@@ -1,46 +1,26 @@
-// Quotes array
-let quotes = [
-  { text: "The best way to get started is to quit talking and begin doing.", category: "Motivation" },
-  { text: "Life is what happens when you're busy making other plans.", category: "Life" },
-];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Quote Generator</title>
+</head>
+<body>
+  <h1>Dynamic Quote Generator</h1>
 
-// ---------------- FUNCTIONS REQUIRED BY GRADER ----------------
+  <!-- Quote Display -->
+  <div id="quoteDisplay"></div>
 
-// 1️⃣ Show random quote
-function showRandomQuote() {
-  if (quotes.length === 0) {
-    document.getElementById('quoteDisplay').innerText = "No quotes available.";
-    return;
-  }
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const quote = quotes[randomIndex];
-  document.getElementById('quoteDisplay').innerText = "${quote.text}" - ${quote.category};
-}
+  <!-- Show New Quote Button -->
+  <button id="newQuote">Show New Quote</button>
 
-// 2️⃣ Add a new quote
-function addQuote() {
-  const text = document.getElementById('newQuoteText').value.trim();
-  const category = document.getElementById('newQuoteCategory').value.trim();
+  <!-- Add New Quote Form -->
+  <div id="addQuoteForm">
+    <input type="text" id="newQuoteText" placeholder="Enter a new quote" />
+    <input type="text" id="newQuoteCategory" placeholder="Enter quote category" />
+    <button type="button" id="addQuoteBtn">Add Quote</button>
+  </div>
 
-  if (!text || !category) {
-    alert("Please enter both quote and category!");
-    return;
-  }
-
-  // Add directly to quotes array
-  quotes.push({ text, category });
-
-  // Update the DOM
-  showRandomQuote();
-
-  // Clear inputs
-  document.getElementById('newQuoteText').value = '';
-  document.getElementById('newQuoteCategory').value = '';
-}
-
-// ---------------- EVENT LISTENERS REQUIRED BY GRADER ----------------
-document.getElementById('newQuote').addEventListener('click', showRandomQuote);
-document.getElementById('addQuoteBtn').addEventListener('click', addQuote);
-
-// ---------------- INITIALIZE ----------------
-showRandomQuote();
+  <script src="script.js"></script>
+</body>
+</html>
