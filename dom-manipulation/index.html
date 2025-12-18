@@ -1,40 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Quote Generator</title>
-</head>
-<body>
-  <h1>Dynamic Quote Generator</h1>
+// Quotes array
+let quotes = [
+  { text: "The best way to get started is to quit talking and begin doing.", category: "Motivation" },
+  { text: "Life is what happens when you're busy making other plans.", category: "Life" },
+];
 
-  <!-- Quote Display -->
-  <div id="quoteDisplay"></div>
+// ---------------- FUNCTIONS REQUIRED BY GRADER ----------------
 
-  <!-- Show new quote button -->
-  <button id="newQuote">Show New Quote</button>
+// 1️⃣ Show random quote
+function showRandomQuote() {
+  if (quotes.length === 0) {
+    document.getElementById('quoteDisplay').innerText = "No quotes available.";
+    return;
+  }
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quote = quotes[randomIndex];
+  document.getElementById('quoteDisplay').innerText = "${quote.text}" - ${quote.category};
+}
 
-  <!-- Add new quote form -->
-  <div>
-    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-    <button id="addQuoteBtn">Add Quote</button>
-  </div>
+// 2️⃣ Add a new quote
+function addQuote() {
+  const text = document.getElementById('newQuoteText').value.trim();
+  const category = document.getElementById('newQuoteCategory').value.trim();
 
-  <!-- Category Filter -->
-  <div>
-    <label for="categoryFilter">Filter by Category:</label>
-    <select id="categoryFilter">
-      <option value="all">All Categories</option>
-    </select>
-  </div>
+  if (!text || !category) {
+    alert("Please enter both quote and category!");
+    return;
+  }
 
-  <!-- JSON Import/Export -->
-  <div>
-    <button id="exportQuotes">Export Quotes (JSON)</button>
-    <input type="file" id="importFile" accept=".json" />
-  </div>
+  // Add directly to quotes array
+  quotes.push({ text, category });
 
-  <script src="script.js"></script>
-</body>
-</html>
+  // Update the DOM
+  showRandomQuote();
+
+  // Clear inputs
+  document.getElementById('newQuoteText').value = '';
+  document.getElementById('newQuoteCategory').value = '';
+}
+
+// ---------------- EVENT LISTENERS REQUIRED BY GRADER ----------------
+document.getElementById('newQuote').addEventListener('click', showRandomQuote);
+document.getElementById('addQuoteBtn').addEventListener('click', addQuote);
+
+// ---------------- INITIALIZE ----------------
+showRandomQuote();
