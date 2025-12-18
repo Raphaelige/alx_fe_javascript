@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynamic Quote Generator</title>
 </head>
 <body>
-
   <h1>Dynamic Quote Generator</h1>
 
+  <!-- Quote Display -->
   <div id="quoteDisplay"></div>
 
-  <!-- INLINE EVENT HANDLER REQUIRED -->
-  <button onclick="displayRandomQuote()">Show New Quote</button>
+  <!-- Show new quote button -->
+  <button id="newQuote">Show New Quote</button>
 
-  <!-- Inputs must exist in HTML for the checker -->
+  <!-- Add new quote form -->
   <div>
     <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
     <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-    <button onclick="addQuote()">Add Quote</button>
+    <button id="addQuoteBtn">Add Quote</button>
+  </div>
+
+  <!-- Category Filter -->
+  <div>
+    <label for="categoryFilter">Filter by Category:</label>
+    <select id="categoryFilter">
+      <option value="all">All Categories</option>
+    </select>
+  </div>
+
+  <!-- JSON Import/Export -->
+  <div>
+    <button id="exportQuotes">Export Quotes (JSON)</button>
+    <input type="file" id="importFile" accept=".json" />
   </div>
 
   <script src="script.js"></script>
